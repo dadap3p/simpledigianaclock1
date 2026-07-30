@@ -1,55 +1,62 @@
-const tickContainer = document.querySelector(".ticks");
+const ticks=document.getElementById("ticks");
 
 for(let i=0;i<12;i++){
 
-const tick=document.createElement("span");
+const angle=i*30*Math.PI/180;
 
-tick.style.transform=`translate(-50%,-50%) rotate(${i*30}deg)`;
+const x1=150+Math.sin(angle)*104;
+const y1=150-Math.cos(angle)*104;
 
-tickContainer.appendChild(tick);
+const x2=150+Math.sin(angle)*118;
+const y2=150-Math.cos(angle)*118;
+
+const line=document.createElementNS("http://www.w3.org/2000/svg","line");
+
+line.setAttribute("x1",x1);
+line.setAttribute("y1",y1);
+line.setAttribute("x2",x2);
+line.setAttribute("y2",y2);
+
+line.setAttribute("class","tick");
+
+ticks.appendChild(line);
 
 }
 
-const hour=document.querySelector(".hour");
-const minute=document.querySelector(".minute");
-const second=document.querySelector(".second");
-
-const digital=document.getElementById("digital");
-const day=document.getElementById("day");
+const hour=document.getElementById("hour");
+const minute=document.getElementById("minute");
+const second=document.getElementById("second");
 
 function update(){
 
 const now=new Date();
 
-const timezone=Intl.DateTimeFormat().resolvedOptions().timeZone;
+const h=now.getHours()%12;
+const m=now.getMinutes();
+const s=now.getSeconds();
 
-const local=new Date(
-now.toLocaleString("en-US",{timeZone:timezone})
+hour.setAttribute(
+"transform",
+`rotate(${h*30+m*0.5} 150 150)`
 );
 
-const h=local.getHours();
-const m=local.getMinutes();
-const s=local.getSeconds();
+minute.setAttribute(
+"transform",
+`rotate(${m*6+s*0.1} 150 150)`
+);
 
-const hourDeg=(h%12)*30+m*0.5;
+second.setAttribute(
+"transform",
+`rotate(${s*6} 150 150)`
+);
 
-const minuteDeg=m*6+s*0.1;
-
-const secondDeg=s*6;
-
-hour.style.transform=`rotate(${hourDeg}deg)`;
-
-minute.style.transform=`rotate(${minuteDeg}deg)`;
-
-second.style.transform=`rotate(${secondDeg}deg)`;
-
-digital.textContent=local.toLocaleTimeString([],{
-hour:"numeric",
+digital.textContent=now.toLocaleTimeString([],{
+hour:"2-digit",
 minute:"2-digit",
 second:"2-digit"
 });
 
-day.textContent=local.toLocaleDateString([],{
+day.textContent=now.toLocaleDateString([],{
 weekday:"long"
 });
 
