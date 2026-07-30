@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clock Widget</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clock</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="card">
 
-<div class="clock">
+<svg id="clock" viewBox="0 0 300 300">
 
-<div class="ticks"></div>
+<g id="ticks"></g>
 
-<div class="hand hour"></div>
-<div class="hand minute"></div>
-<div class="hand second"></div>
+<line id="hour" x1="150" y1="150" x2="150" y2="95"/>
+<line id="minute" x1="150" y1="150" x2="150" y2="70"/>
+<line id="second" x1="150" y1="150" x2="150" y2="55"/>
 
-<div class="center"></div>
+<circle cx="150" cy="150" r="7"/>
 
-</div>
+</svg>
 
 <div id="digital"></div>
 <div id="day"></div>
