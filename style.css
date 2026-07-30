@@ -1,112 +1,80 @@
 *{
+box-sizing:border-box;
 margin:0;
 padding:0;
-box-sizing:border-box;
 font-family:Inter,sans-serif;
 }
 
 body{
-background:transparent;
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
+background:transparent;
 }
 
 .card{
 
 width:360px;
-height:340px;
+height:360px;
 
 border:1px solid #111;
-border-radius:18px;
+border-radius:22px;
 
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 
-background:white;
+background:#fff;
 }
 
-.clock{
-
-width:180px;
-height:180px;
-
-position:relative;
-border-radius:50%;
+svg{
+width:230px;
+height:230px;
+overflow:visible;
 }
 
-.ticks{
-position:absolute;
-inset:0;
+#hour{
+stroke:#333;
+stroke-width:4;
+stroke-linecap:round;
 }
 
-.ticks span{
-position:absolute;
-left:50%;
-top:50%;
-width:1.5px;
-height:10px;
-background:#d6d6d6;
-transform-origin:center -80px;
+#minute{
+stroke:#444;
+stroke-width:3;
+stroke-linecap:round;
 }
 
-.hand{
-
-position:absolute;
-
-left:50%;
-top:50%;
-
-transform-origin:bottom center;
-
-border-radius:20px;
+#second{
+stroke:#666;
+stroke-width:2;
+stroke-linecap:round;
 }
 
-.hour{
-width:3px;
-height:48px;
-background:#222;
-margin-left:-1.5px;
-margin-top:-48px;
+circle{
+fill:#111;
 }
 
-.minute{
-width:2.5px;
-height:68px;
-background:#444;
-margin-left:-1.25px;
-margin-top:-68px;
-}
-
-.second{
-width:1.5px;
-height:74px;
-background:#666;
-margin-left:-0.75px;
-margin-top:-74px;
-}
-
-.center{
-position:absolute;
-width:11px;
-height:11px;
-background:#111;
-border-radius:50%;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
+.tick{
+stroke:#ddd;
+stroke-width:2;
+stroke-linecap:round;
 }
 
 #digital{
+
 margin-top:12px;
-font-size:18px;
-font-weight:600;
+
+font-size:20px;
+font-weight:700;
 }
 
 #day{
+
 margin-top:4px;
+
 font-size:16px;
+font-weight:500;
 }
